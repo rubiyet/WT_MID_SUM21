@@ -1,3 +1,22 @@
+<?php
+    $userid = "";
+    $password = "";
+    $error_massage = "";
+
+    $error = false;
+
+    if(isset($_POST["submit"])){
+        if(empty($_POST["userid"]) || empty($_POST["password"]) || is_numeric($_POST["userid"]) == false){
+            $error = true;
+            $error_massage = "Invalid User Id and Password.";
+        }
+        else{
+            $userid = $_POST["userid"];
+            $password = $_POST["password"];
+        }
+    }
+
+?>
 <html>
     <body>
         <form action="" method="POST">
@@ -13,16 +32,16 @@
                         <td colspan="5" align="center">Sign in with your organizational Id and Password</td>
                     </tr>
                     <tr>
-                        <td colspan="5" align="center"><input type="text" name="userid" placeholder="User ID"></td>
+                        <td colspan="5" align="center"><input type="text" name="userid" placeholder="User ID" value="<?php echo $userid?>"></td>
                     </tr>
                     <tr>
-                    <td colspan="5" style="height: 10px;"></td>
+                    <td colspan="5"></td>
                     </tr>
                     <tr>
-                        <td colspan="5" align="center"><input type="text" name="password" placeholder="Password"></td>
+                        <td colspan="5" align="center"><input type="password" name="password" placeholder="Password" value="<?php echo $password?>"></td>
                     </tr>
                     <tr>
-                    <td colspan="5" style="height: 15px;"></td>
+                    <td colspan="5" align="center"><?php echo $error_massage?></td>
                     </tr>
                     <tr>
                         <td colspan="5" align="center"><input type="submit" name="submit" Value="LOGIN"></td>
