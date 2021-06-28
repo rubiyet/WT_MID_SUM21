@@ -14,17 +14,40 @@
 
     $error = false;
 
-    if(isset($_POST["submit"])){
+    if(isset($_POST["insert"])){
         if(empty($_POST["courseid"])){
             $error = true;
             $error_courseid = "Must Need Course ID";
         }
-        else if(is_numeric($_POST["courseid"]) == false){
-            $error = true;
-            $error_courseid = "Course ID must be contain only number";
-        }
         else{
-            $courseid = $_POST["courseid"];
+            $arr_courseid = str_split($_POST["courseid"]);
+            //courseid like C4001,c4,C40009,c400000002
+            if($arr_courseid[0] == 'C' || $arr_courseid[0] == 'c'){
+                $counter3 = 0;
+                $counter4 = 0;
+                foreach($arr_courseid as $ac){
+                    if($ac >= 'A' && $ac <= 'Z'){
+                        $counter3++;
+                    }
+                    else if($ac >= 'a' && $ac <= 'z'){
+                        $counter3++;
+                    }
+                    else if(is_numeric($ac)){
+                        $counter4++;
+                    }
+                }
+                if($counter3 > 1 || $counter4 < 1){
+                    $error = true;
+                    $error_courseid = "Only First Index of Course ID must be Letter as C/c then only number.";
+                }
+                else{
+                    $courseid = $_POST["courseid"];
+                }
+            }
+            else{
+                $error = true;
+                $error_courseid = "Only First Index of Course ID must be Letter as C/c then only number.";           
+            }
         }
         if(empty($_POST["coursename"])){
             $error = true;
@@ -61,6 +84,10 @@
             $error = true;
             $error_class = "Class must be contain only number";
         }
+        else if($_POST["class"] >= 1 && $_POST["class"] >= 10){
+            $error = true;
+            $error_class = "Class must be contain 1 to 10";
+        }
         else{
             $class = $_POST["class"];
         }
@@ -70,7 +97,7 @@
         }
         else if(strlen($_POST["section"]) > 1){
             $error = true;
-            $error_section = "Section must be contain only 1 letter";
+            $error_section = "Section must be contain only one letter";
         }
         else{
             $letter1 = 0;
@@ -85,7 +112,7 @@
                     $number1++;
             }
             if($number1 >= 1){
-                $error_section = "Section must be contain only 1 Letter";
+                $error_section = "Section must be contain only one Letter";
             }
             else{
                 $section = $_POST["section"];
@@ -106,23 +133,48 @@
             $error = true;
             $error_teacherid = "Must Need Teacher ID";
         }
-        else if(is_numeric($_POST["teacherid"]) == false){
-            $error = true;
-            $error_teacherid = "Teacher ID must be contain only number";
-        }
         else{
-            $teacherid = $_POST["teacherid"];
+            $arr_teacherid = str_split($_POST["teacherid"]);
+            //courseid like C4001,c4,C40009,c400000002
+            if($arr_teacherid[0] == 'T' || $arr_teacherid[0] == 't'){
+                $counter5 = 0;
+                $counter6 = 0;
+                foreach($arr_teacherid as $at){
+                    if($at >= 'A' && $at <= 'Z'){
+                        $counter5++;
+                    }
+                    else if($at >= 'a' && $at <= 'z'){
+                        $counter5++;
+                    }
+                    else if(is_numeric($at)){
+                        $counter6++;
+                    }
+                }
+                if($counter5 > 1 || $counter6 < 1){
+                    $error = true;
+                    $error_teacherid = "Only First Index of Teacher ID must be Letter as T/t then only number.";
+                }
+                else{
+                    $teacherid = $_POST["teacherid"];
+                }
+            }
+            else{
+                $error = true;
+                $error_teacherid = "Only First Index of Teacher ID must be Letter as T/t then only number.";
+            }
         } 
     }
 ?>
 <html>
-    <head></head>
+    <head>
+    
+    </head>
     <body>
         <form action="" method="POST">
             <table>
                 <tr>
                     <td>
-                        <h1>Course Insert</h1>
+                        <h1>COURSE INSERT</h1>
                     </td>
                 </tr>
                 <tr>
@@ -141,7 +193,7 @@
                     <td>
                         <input type="text" name="coursename" value="<?php echo $coursename?>">
                     </td>
-                    <td><span><?php echo $error_coursename;?></span></td>
+                    <td><?php echo $error_coursename;?></td>
                 </tr>
                 <tr>
                     <td align="right">
@@ -150,7 +202,7 @@
                     <td>
                         <input type="text" name="class" value="<?php echo $class?>">
                     </td>
-                    <td><span><?php echo $error_class;?></span></td>
+                    <td><?php echo $error_class;?></td>
                 </tr>
                 <tr>
                     <td align="right">
@@ -159,7 +211,7 @@
                     <td>
                         <input type="text" name="section" value="<?php echo $section?>">
                     </td>
-                    <td><span><?php echo $error_section;?></span></td>
+                    <td><?php echo $error_section;?></td>
                 </tr>
                 <tr>
                     <td align="right">
@@ -168,7 +220,7 @@
                     <td>
                         <input type="text" name="year" value="<?php echo $year?>">
                     </td>
-                    <td><span><?php echo $error_year;?></span></td>
+                    <td><?php echo $error_year;?></td>
                 </tr>
                 <tr>
                     <td align="right">
@@ -177,12 +229,25 @@
                     <td>
                         <input type="text" name="teacherid" value="<?php echo $teacherid?>">
                     </td>
-                    <td><span><?php echo $error_teacherid;?></span></td>
+                    <td><?php echo $error_teacherid;?></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td align="center">
-                        <input type="Submit" name="submit" value="Insert">
+                        <input type="Submit" name="insert" value="Insert">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" colspan=5>
+                        <img src="space1.png">
+                    </td>
+                </tr>
+                <tr>
+                <td></td>
+                    <td align="center" colspan=5>
+                        <a href="../login_form.php">logIn</a><br>
+                        <a href="admin_info_form.php">Admin Personal Information Insert</a><br>
+                        <a href="search_form.php">Search</a>
                     </td>
                 </tr>
             </table>
