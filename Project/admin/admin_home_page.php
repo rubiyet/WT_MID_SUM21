@@ -45,7 +45,7 @@
             </tr>
         </table>
         <form action="" method="POST">
-        <table width="100%" height="785">
+        <table width="100%" height="770">
             <tr>
                 <td colspan="3"><hr></td>
             </tr>
@@ -58,7 +58,7 @@
                                                 <input type="submit" name="studententryinthecourse" value="     Student Entry In The Course    "><br><hr>
                                                 <input type="submit" name="studententryintheresultsheet" value="Student Entry In The Result Sheet"><br><hr>
                                                 <input type="submit" name="passwordchange" value="             Password Change            "><br><hr></td>
-                <td rowspan="2" colspan="2" width="100%"><iframe src="<?php if(!empty($iframesrc)) echo $iframesrc; else echo "search_form.php"?>" height="100%" width="100%" title="Iframe Example"></iframe></td>
+                <td rowspan="2" colspan="2" width="100%"><iframe src="<?php if(!empty($iframesrc)) echo $iframesrc; else echo "search_form.php"?>" height="100%" width="100%"></iframe></td>
             </tr>
         </table>
         </form>

@@ -30,7 +30,7 @@
             </tr>
         </table>
         <form action="" method="POST">
-        <table width="100%" height="785">
+        <table width="100%" height="770">
             <tr>
                 <td colspan="3"><hr></td>
             </tr>
