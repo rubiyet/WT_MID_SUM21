@@ -237,19 +237,6 @@
                         <input type="Submit" name="insert" value="Insert">
                     </td>
                 </tr>
-                <tr>
-                    <td align="center" colspan=5>
-                        <img src="space1.png">
-                    </td>
-                </tr>
-                <tr>
-                <td></td>
-                    <td align="center" colspan=5>
-                        <a href="../login_form.php">logIn</a><br>
-                        <a href="admin_info_form.php">Admin Personal Information Insert</a><br>
-                        <a href="search_form.php">Search</a>
-                    </td>
-                </tr>
             </table>
         </form>
     </body>
