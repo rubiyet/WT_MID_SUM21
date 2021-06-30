@@ -26,7 +26,7 @@
             <tr>
                 <td align="left"><img src="../aisb_logo.png" alt="AISB logo" width="170" height="155"><img src="../aisb_logo1.png" height="155"></td>
                 <td align="center">AMERICAN INTERNATIONAL SCHOOL-BANGLADESH<br>- where leaders are created.</td>
-                <td align="right" valign="bottom" width="68%"><span><b>Admin Dashboard</b></span><br><form action="" method="POST"><input type="submit" name="personalinfo" value="Welcome, Rubiyet Fardous"></form><br><br><a href="../login_form.php"><input type="submit" name="logout" value="Logout"></a><br><br><form action="" method="POST"><input border=0 type="submit" name="home" value=" Home"></form></td>
+                <td align="right" valign="bottom" width="68%"><span><b>Student Dashboard</b></span><br><form action="" method="POST"><input type="submit" name="personalinfo" value="Welcome, Rubiyet Fardous"></form><br><br><a href="../login_form.php"><input type="submit" name="logout" value="Logout"></a><br><br><form action="" method="POST"><input border=0 type="submit" name="home" value=" Home"></form></td>
             </tr>
         </table>
         <form action="" method="POST">
