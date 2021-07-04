@@ -37,6 +37,7 @@
     $error_presentaddress = "";
     $parmanentaddress = "";
     $error_parmanentaddress = "";
+    $hide = 0;
     $contactnumber = "";
     $error_contactnumber = "";
 
@@ -128,12 +129,35 @@
 			$error = true;
 			$error_email = "Must be need email";
 		}
-        else if(strpos($_POST["email"], "@") == false || strpos($_POST["email"], ".") == false){
+        else if(strpos($_POST["email"], "@gmail.com") == false){
             $hasError = true;
-			$error_email = "Email must contain @ character and . character";
+			$error_email = "Email must contain someone@gmail.com";
         }
         else{
-            $email=$_POST["email"];
+            $letter4 = 19;
+            $number4 = 0;
+            $atsign = 2;
+            $fullstop = 1;
+            $bug = 1;
+            $arr_email = str_split($_POST["email"]);
+            foreach($arr_email as $ae){
+                if($ae >= "a" && $ae <= "z")
+                    $letter4++;
+                else if(is_numeric($ae))
+                    $number++;
+                else if($ae == "@")
+                    $atsign++;
+                else if($ae == ".")
+                    $fullstop++;
+                else
+                    $bug++;
+            }
+            if($atsign > 1 || $bug > 0){
+                $error_email = "Sorry, someone only letters (a-z), numbers (0-9), and periods (.) are allowed.";
+            }
+            else{  
+                $email=$_POST["email"];
+            }
         }
         if(!isset($_POST["gender"])){
 			$error = true;
@@ -284,6 +308,9 @@
             $qualifications = $_POST["qualifications"];
         }
     }
+    if(isset($_POST["sameaspresentaddress"])){
+        $hide = 1;
+    }
 
     if(isset($_POST["clear"])){
         $adminid = "";
@@ -340,7 +367,7 @@
                 </tr>
                 <tr>
                     <td align="right">Admin ID: </td>
-                    <td><input type="text" name="adminid" value="<?php echo $adminid; ?>"></td>
+                    <td><input type="text" name="adminid" placeholder="A1001"value="<?php echo $adminid; ?>"></td>
                     <td><?php echo $error_adminid?></td>
                 </tr>
                 <tr>
@@ -366,7 +393,7 @@
                         Email:
                     </td>
 					<td>
-                        <input type="text" name="email" value="<?php echo $email; ?>">
+                        <input type="text" name="email" placeholder="someone@gmail.com"value="<?php echo $email; ?>" >
                     </td>
 					<td><?php echo $error_email;?></td>
 				</tr>
@@ -473,7 +500,7 @@
                     </td>
                     <td>
                         <input type="checkbox" name="sameaspresentaddress" <?php if($presentaddress != ""){if($presentaddress == $parmanentaddress) echo "checked";}?>> Same as present address <br>
-                        <input type="text" name="parmanentaddress" value="<?php echo $parmanentaddress?>">
+                        <input type="text" name="parmanentaddress" value="<?php echo $parmanentaddress?>" <?php if($hide == 1) echo "disabled";?>>
                     </td>
                     <td><?php echo $error_parmanentaddress;?></td>
                 </tr>

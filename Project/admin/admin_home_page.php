@@ -45,7 +45,7 @@
             </tr>
         </table>
         <form action="" method="POST">
-        <table width="100%" height="770">
+        <table width="100%" height="740">
             <tr>
                 <td colspan="3"><hr></td>
             </tr>

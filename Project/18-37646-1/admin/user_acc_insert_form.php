@@ -1,13 +1,13 @@
 <?php
 	$userid ="";
 	$error_userid = "";
-	$input_type = "";
+	$type = "";
 	$error_type ="";
 	$password = "";
 	$error_password = "";
 	$error = false;
 	
-	$type= array("student","teacher","admin");
+	$array_type= array("Admin","Teacher","Student");
 	
 	if(isset($_POST["submit"])){
 		if(empty($_POST["userid"])){
@@ -26,7 +26,7 @@
 			$error_type = "need type";
 		}
 		else{
-			$input_type = $_POST["type"];
+			$type = $_POST["type"];
 		}
 		if(empty($_POST["password"])){
 			$error = true;
@@ -63,8 +63,8 @@
 					<td><select name="type">
 							<option disabled selected>Type</option>
 							<?php 
-								foreach($type as $t){
-									if($t == $input_type) 
+								foreach($array_type as $t){
+									if($t == $type) 
 										echo "<option selected>$t</option>"; 
 									else 
 										echo "<option>$t</option>";}
