@@ -1,0 +1,31 @@
+#table1{
+    padding-top: 40px;
+    padding-left: 80px;
+}
+#img{
+    width: 194px;
+    height: 217px;
+}
+#searchbox{
+    width: 130px;
+    height: 25px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-right: 2px;
+}
+#searchbutton{
+    height: 26px;
+    font-size: 13px;
+    color: white;
+    background-color: #428BCA;
+    border: none;
+    padding: 6px;
+    border-radius: 5px;
+}
+#error{
+    font-size: 15px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+td{
+    text-align: center;
+}

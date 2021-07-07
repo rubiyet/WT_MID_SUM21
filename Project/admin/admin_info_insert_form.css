@@ -1,0 +1,35 @@
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+#table1{
+    width: 100%;
+    height: 99%;
+    overflow-y: hidden;
+    border: 1px solid gray;
+    padding: 0px;
+    border-radius: 5px;
+}
+#table2{
+    width: 100%;
+    height: 100%;
+}
+#title{
+    width: 100%;
+    height: 1px;
+    font-size: 18.72px;
+    color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #004EA2;
+    border-radius: 5px;
+    padding:10px;
+    vertical-align: middle;
+}
+#button{
+    height: 26px;
+    font-size: 13px;
+    color: white;
+    background-color: #428BCA;
+    border: none;
+    padding: 6px;
+    border-radius: 5px;
+}

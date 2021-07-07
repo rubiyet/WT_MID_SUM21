@@ -134,11 +134,11 @@
 			$error_email = "Email must contain someone@gmail.com";
         }
         else{
-            $letter4 = 19;
+            $letter4 = 0;
             $number4 = 0;
-            $atsign = 2;
-            $fullstop = 1;
-            $bug = 1;
+            $atsign = 0;
+            $fullstop = 0;
+            $bug = 0;
             $arr_email = str_split($_POST["email"]);
             foreach($arr_email as $ae){
                 if($ae >= "a" && $ae <= "z")
@@ -357,166 +357,151 @@
 ?>
 <html>
     <head>
-
+        <link rel="stylesheet" href="admin_info_insert_form.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
     </head>
     <body>
         <form action = "" method = "POST">
-            <table>
+            <table id="table1">
                 <tr>
-                    <td><h1>ADMIN PERSONAL INFORMATION INSERT</h1> </td>
+                    <td colspan="3" id="title" valign="center">ADMIN PERSONAL INFORMATION INSERT</td>
                 </tr>
                 <tr>
-                    <td align="right">Admin ID: </td>
-                    <td><input type="text" name="adminid" placeholder="A1001"value="<?php echo $adminid; ?>"></td>
-                    <td><?php echo $error_adminid?></td>
-                </tr>
-                <tr>
-                    <td align="right">
-                        Name: 
-                    </td>
                     <td>
-                        <input type="text" name="name" value="<?php echo $name?>">
-                    </td>
-                    <td><?php echo $error_name;?></td>
-                </tr>
-                <tr>
-                    <td align="right">
-                        Salary: 
-                    </td>
-                    <td>
-                        <input type="text" name="salary" value="<?php echo $salary?>">
-                    </td>
-                    <td><?php echo $error_salary;?></td>
-                </tr>
-                <tr>
-					<td align="right">
-                        Email:
-                    </td>
-					<td>
-                        <input type="text" name="email" placeholder="someone@gmail.com"value="<?php echo $email; ?>" >
-                    </td>
-					<td><?php echo $error_email;?></td>
-				</tr>
-                <tr>
-					<td align="right">
-                        Gender:
-                    </td>
-					<td>
-                        <input type="radio" value="Male" <?php if($gender=="Male") echo "checked"; ?> name="gender"> Male <input name="gender" <?php if($gender=="Female") echo "checked"; ?> value="Female" type="radio"> Female 
-                    </td>
-					<td><?php echo $error_gender;?></td>
-				</tr>
-				<tr>
-					<td align="right">
-                    Birth Date:
-                    </td>
-					<td>
-                        <select name="inputbdday"><option disabled selected>Day</option><?php foreach($day as $d){if($d == $inputbdday) echo "<option selected>$d</option>"; else echo "<option>$d</option>";}?></select> <select name="inputbdmonth"><option disabled selected>Month</option><?php foreach($month as $m){if($m == $inputbdmonth) echo "<option selected>$m</option>"; else  echo "<option>$m</option>";}?></select> <select name="inputbdyear"><option disabled selected>Year</option><?php foreach($year as $y){if($y == $inputbdyear) echo "<option selected>$y</option>"; else  echo "<option>$y</option>";}?></select>
-                    </td>   
-					<td><?php echo $error_inputbddaymonthyear;?></td>
-				<tr>
-                <tr>
-                    <td align="right">
-                        Nationality: 
-                    </td>
-                    <td>
-                    <select name="inputnationality"><option disabled selected>Select</option><?php foreach($nationality as $n){if($n == $inputnationlity) echo "<option selected>$n</option>"; else echo "<option>$n</option>";}?></select>
-                    </td>
-                    <td><?php echo $error_nationality;?></td>
-                </tr>
-                <tr>
-                    <td align="right">
-                        Religion: 
-                    </td>
-                    <td>
-                        <select name="inputreligion"><option disabled selected>Select</option><?php foreach($religion as $r){if($r == $inputreligion) echo "<option selected>$r</option>"; else echo "<option>$r</option>";}?></select>
-                    </td>
-                    <td><?php echo $error_religion;?></td>
-                </tr>
-                <tr>
-					<td align="right">
-                        Blood Group:
-                    </td>
-					<td>
-                    <select name="inputbloodgroup"><option disabled selected>Select</option><?php foreach($bloodgroup as $bg){if($bg == $inputbloodgroup) echo "<option selected>$bg</option>"; else echo "<option>$bg</option>";}?></select>
-                    </td>
-					<td><?php echo $error_inputbloodgroup;?></td>
-				</tr>
-                <tr>
-                    <td align="right">
-                        Father Name: 
-                    </td>
-                    <td>
-                        <input type="text" name="fathername" value="<?php echo $fathername?>">
-                    </td>
-                    <td><?php echo $error_fathername;?></td>
-                </tr>
-                <tr>
-                    <td align="right">
-                        Mother Name: 
-                    </td>
-                    <td>
-                        <input type="text" name="mothername" value="<?php echo $mothername?>">
-                    </td>
-                    <td><?php echo $error_mothername;?></td>
-                </tr>
-                <tr>
-					<td align="right">
-                    Joining Date:
-                    </td>
-					<td>
-                        <select name="inputjday"><option disabled selected>Day</option><?php foreach($day as $d){if($d == $inputjday) echo "<option selected>$d</option>"; else echo "<option>$d</option>";}?></select> <select name="inputjmonth"><option disabled selected>Month</option><?php foreach($month as $m){if($m == $inputjmonth) echo "<option selected>$m</option>"; else  echo "<option>$m</option>";}?></select> <select name="inputjyear"><option disabled selected>Year</option><?php foreach($year as $y){if($y == $inputjyear) echo "<option selected>$y</option>"; else  echo "<option>$y</option>";}?></select>
-                    </td>   
-					<td><?php echo $error_inputjdaymonthyear;?></td>
-				<tr>
-                <tr>
-					<td align="right">
-                    Left Date:
-                    </td>
-					<td>
-                        <select name="inputlday"><option disabled selected>Day</option><?php foreach($day as $d){if($d == $inputlday) echo "<option selected>$d</option>"; else echo "<option>$d</option>";}?></select> <select name="inputlmonth"><option disabled selected>Month</option><?php foreach($month as $m){if($m == $inputlmonth) echo "<option selected>$m</option>"; else  echo "<option>$m</option>";}?></select> <select name="inputlyear"><option disabled selected>Year</option><?php foreach($year as $y){if($y == $inputlyear) echo "<option selected>$y</option>"; else  echo "<option>$y</option>";}?></select>
-                    </td>   
-					<td><?php echo $error_inputldaymonthyear;?></td>
-				<tr>
-                <tr>
-                    <td align="right">
-                        Qualification:
-                    </td>
-                    <td><input type="checkbox" name="qualifications[]" value="SSC" <?php foreach($qualifications as $qu){if($qu == "SSC") echo "checked";} ?>> SSC <input type="checkbox" name="qualifications[]" value="HSC" <?php foreach($qualifications as $qu){if($qu == "HSC") echo "checked";} ?>> HSC <input type="checkbox" name="qualifications[]" value="Other" <?php foreach($qualifications as $qu){if($qu == "Other") echo "checked";} ?>> Other</td>
-                    <td><?php echo $error_qualifications;?></td>
-                </tr>
-                <tr>
-                    <td align="right">
-                        Present Address: 
-                    </td>
-                    <td>
-                        <input type="text" name="presentaddress" value="<?php echo $presentaddress?>">
-                    </td>
-                    <td><?php echo $error_presentaddress;?></td>
-                </tr>
-                <tr>
-                    <td align="right">
-                        Parmanent address: 
-                    </td>
-                    <td>
-                        <input type="checkbox" name="sameaspresentaddress" <?php if($presentaddress != ""){if($presentaddress == $parmanentaddress) echo "checked";}?>> Same as present address <br>
-                        <input type="text" name="parmanentaddress" value="<?php echo $parmanentaddress?>" <?php if($hide == 1) echo "disabled";?>>
-                    </td>
-                    <td><?php echo $error_parmanentaddress;?></td>
-                </tr>
-                <tr>
-                    <td align="right">
-                        Contact Number: 
-                    </td>
-                    <td>
-                        <input type="text" name="contactnumber" value="<?php echo $contactnumber?>">
-                    </td>
-                    <td><?php echo $error_contactnumber;?></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td align="center">
-                        <input type="submit" name="insert" value="Insert"> <input type="submit" name="clear" value="Clear">
+                    <table id="table2">
+                        <tr>
+                                <td align="right" width="39%">Admin ID: </td>
+                                <td width="23%"><input type="text" name="adminid" placeholder="A1001"value="<?php echo $adminid; ?>"></td>
+                                <td width="38%"><?php echo $error_adminid?></td>
+                            </tr>
+                        <tr>
+                            <td align="right">Name: </td>
+                            <td><input type="text" name="name" value="<?php echo $name?>"></td>
+                            <td><?php echo $error_name;?></td>
+                        </tr>
+                        <tr>
+                            <td align="right">Salary: </td>
+                            <td><input type="text" name="salary" value="<?php echo $salary?>"></td>
+                            <td><?php echo $error_salary;?></td>
+                        </tr>
+                        <tr>
+                            <td align="right">Email: </td>
+                            <td><input type="text" name="email" placeholder="someone@gmail.com"value="<?php echo $email; ?>" ></td>
+                            <td><?php echo $error_email;?></td>
+                        </tr>
+                        <tr>
+                            <td align="right">Gender: </td>
+                            <td><input type="radio" value="Male" <?php if($gender=="Male") echo "checked"; ?> name="gender"> Male <input name="gender" <?php if($gender=="Female") echo "checked"; ?> value="Female" type="radio"> Female </td>
+                            <td><?php echo $error_gender;?></td>
+                        </tr>
+                        <tr>
+                            <td align="right">Birth Date: </td>
+                            <td>
+                                <select name="inputbdday"><option disabled selected>Day</option><?php foreach($day as $d){if($d == $inputbdday) echo "<option selected>$d</option>"; else echo "<option>$d</option>";}?></select> <select name="inputbdmonth"><option disabled selected>Month</option><?php foreach($month as $m){if($m == $inputbdmonth) echo "<option selected>$m</option>"; else  echo "<option>$m</option>";}?></select> <select name="inputbdyear"><option disabled selected>Year</option><?php foreach($year as $y){if($y == $inputbdyear) echo "<option selected>$y</option>"; else  echo "<option>$y</option>";}?></select>
+                            </td>   
+                            <td><?php echo $error_inputbddaymonthyear;?></td>
+                        <tr>
+                        <tr>
+                            <td align="right">Nationality: </td>
+                            <td><select name="inputnationality"><option disabled selected>Select</option><?php foreach($nationality as $n){if($n == $inputnationlity) echo "<option selected>$n</option>"; else echo "<option>$n</option>";}?></select></td>
+                            <td><?php echo $error_nationality;?></td>
+                        </tr>
+                        <tr>
+                            <td align="right">Religion: </td>
+                            <td>
+                                <select name="inputreligion"><option disabled selected>Select</option><?php foreach($religion as $r){if($r == $inputreligion) echo "<option selected>$r</option>"; else echo "<option>$r</option>";}?></select>
+                            </td>
+                            <td><?php echo $error_religion;?></td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                Blood Group:
+                            </td>
+                            <td>
+                            <select name="inputbloodgroup"><option disabled selected>Select</option><?php foreach($bloodgroup as $bg){if($bg == $inputbloodgroup) echo "<option selected>$bg</option>"; else echo "<option>$bg</option>";}?></select>
+                            </td>
+                            <td><?php echo $error_inputbloodgroup;?></td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                Father Name: 
+                            </td>
+                            <td>
+                                <input type="text" name="fathername" value="<?php echo $fathername?>">
+                            </td>
+                            <td><?php echo $error_fathername;?></td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                Mother Name: 
+                            </td>
+                            <td>
+                                <input type="text" name="mothername" value="<?php echo $mothername?>">
+                            </td>
+                            <td><?php echo $error_mothername;?></td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                            Joining Date:
+                            </td>
+                            <td>
+                                <select name="inputjday"><option disabled selected>Day</option><?php foreach($day as $d){if($d == $inputjday) echo "<option selected>$d</option>"; else echo "<option>$d</option>";}?></select> <select name="inputjmonth"><option disabled selected>Month</option><?php foreach($month as $m){if($m == $inputjmonth) echo "<option selected>$m</option>"; else  echo "<option>$m</option>";}?></select> <select name="inputjyear"><option disabled selected>Year</option><?php foreach($year as $y){if($y == $inputjyear) echo "<option selected>$y</option>"; else  echo "<option>$y</option>";}?></select>
+                            </td>   
+                            <td><?php echo $error_inputjdaymonthyear;?></td>
+                        <tr>
+                        <tr>
+                            <td align="right">
+                            Left Date:
+                            </td>
+                            <td>
+                                <select name="inputlday"><option disabled selected>Day</option><?php foreach($day as $d){if($d == $inputlday) echo "<option selected>$d</option>"; else echo "<option>$d</option>";}?></select> <select name="inputlmonth"><option disabled selected>Month</option><?php foreach($month as $m){if($m == $inputlmonth) echo "<option selected>$m</option>"; else  echo "<option>$m</option>";}?></select> <select name="inputlyear"><option disabled selected>Year</option><?php foreach($year as $y){if($y == $inputlyear) echo "<option selected>$y</option>"; else  echo "<option>$y</option>";}?></select>
+                            </td>   
+                            <td><?php echo $error_inputldaymonthyear;?></td>
+                        <tr>
+                        <tr>
+                            <td align="right">
+                                Qualification:
+                            </td>
+                            <td><input type="checkbox" name="qualifications[]" value="SSC" <?php foreach($qualifications as $qu){if($qu == "SSC") echo "checked";} ?>> SSC <input type="checkbox" name="qualifications[]" value="HSC" <?php foreach($qualifications as $qu){if($qu == "HSC") echo "checked";} ?>> HSC <input type="checkbox" name="qualifications[]" value="Other" <?php foreach($qualifications as $qu){if($qu == "Other") echo "checked";} ?>> Other</td>
+                            <td><?php echo $error_qualifications;?></td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                Present Address: 
+                            </td>
+                            <td>
+                                <input type="text" name="presentaddress" value="<?php echo $presentaddress?>">
+                            </td>
+                            <td><?php echo $error_presentaddress;?></td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                Parmanent address: 
+                            </td>
+                            <td>
+                                <input type="checkbox" name="sameaspresentaddress" <?php if($presentaddress != ""){if($presentaddress == $parmanentaddress) echo "checked";}?>> Same as present address <br>
+                                <input type="text" name="parmanentaddress" value="<?php echo $parmanentaddress?>" <?php if($hide == 1) echo "disabled";?>>
+                            </td>
+                            <td><?php echo $error_parmanentaddress;?></td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                Contact Number: 
+                            </td>
+                            <td>
+                                <input type="text" name="contactnumber" value="<?php echo $contactnumber?>">
+                            </td>
+                            <td><?php echo $error_contactnumber;?></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="center">
+                                <input type="submit" name="insert" value="Insert" id="button">&emsp;<input type="submit" name="clear" value="Clear" id="button">
+                            </td>
+                        </tr>
+                    </table>
                     </td>
                 </tr>
             </table>

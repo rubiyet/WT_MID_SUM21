@@ -23,7 +23,7 @@
         if(!$error){
             foreach($users as $un=>$pw){
                 if($username == $un && $password == $pw){
-                    setcookie("loggeduser",$username,time()+300,"/");
+                    setcookie("loggeduser",$username,time()+60,"/");
                     header("Location: welcome.php");
                 }
             }

@@ -119,41 +119,44 @@
 ?>
 <html>
     <head>
-    
+        <link rel="stylesheet" href="search_form.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
     </head>
     <body>
         <form action = "" method = "POST">
-            <table align="center">
+            <table id=table1>
                 <tr>
-                    <td align="center">
-                        <img src="./student_logo.png" alt="Student logo" width="194" height="217">
+                    <td>
+                        <img src="./student_logo.png" alt="Student logo" id="img">
                     </td>
-                    <td align="center">
+                    <td>
                         <img src="./space.png">
                     </td>
-                    <td align="center">
-                        <img src="./teacher_logo.png" alt="Teacher logo" width="194" height="217">
+                    <td>
+                        <img src="./teacher_logo.png" alt="Teacher logo" id="img">
                     </td>
-                    <td align="center">
+                    <td>
                         <img src="./space.png">
                     </td>
-                    <td align="center">
-                        <img src="./admin_logo.png" alt="Admin logo" width="194" height="217">
+                    <td>
+                        <img src="./admin_logo.png" alt="Admin logo" id="img">
                     </td>
                 </tr>
                 <tr>
-                    <td align="center"><input type="text" name="studentid" placeholder="Enter Student ID" value="<?php echo $studentid;?>"> <input type="submit" name="enterstudent" value="Enter"></td>
+                    <td><input type="text" name="studentid" id="searchbox" placeholder="Enter Student ID" value="<?php echo $studentid;?>"> <input type="submit" name="enterstudent" id="searchbutton" value="Search"></td>
                     <td></td>
-                    <td align="center"><input type="text" name="teacherid" placeholder="Enter Teacher ID" value="<?php echo $teacherid;?>"> <input type="submit" name="enterteacher" value="Enter"></td>
+                    <td><input type="text" name="teacherid" id="searchbox" placeholder="Enter Teacher ID" value="<?php echo $teacherid;?>"> <input type="submit" name="enterteacher" id="searchbutton" value="Search"></td>
                     <td></td>
-                    <td align="center"><input type="text" name="adminid" placeholder="Enter Admin ID" value="<?php echo $adminid;?>"> <input type="submit" name="enteradmin" value="Enter"></td>
+                    <td><input type="text" name="adminid" id="searchbox" placeholder="Enter Admin ID" value="<?php echo $adminid;?>"> <input type="submit" name="enteradmin" id="searchbutton" value="Search"></td>
                 </tr>
                 <tr>
-                    <td align="center"><?php echo $error_studentid;?></td>
+                    <td><span id="error"><?php echo $error_studentid;?></span></td>
                     <td></td>
-                    <td align="center"><?php echo $error_teacherid;?></td>
+                    <td><span id="error"><?php echo $error_teacherid;?></span></td>
                     <td></td>
-                    <td align="center"><?php echo $error_adminid;?></td>
+                    <td><span id="error"><?php echo $error_adminid;?></span></td>
                 </tr>
             </table>
         </form>

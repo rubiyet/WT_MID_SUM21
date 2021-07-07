@@ -28,7 +28,7 @@
         <form action="" method="POST">
             <table align="center">
                 <tr>
-                    <td><img src="aisb_logo.png" alt="AISB logo" width="194" height="217"></td>
+                    <td><img src="resources/aisb_logo.png" alt="AISB logo" width="194" height="217"></td>
                     <td><img src="aisb_logo1.png" height="210"></td>
                     <td align="center">AMERICAN INTERNATIONAL<br>SCHOOL-BANGLADESH<br><span>- where leaders are created.</span></td>                  
                 </tr>
@@ -64,6 +64,6 @@
                 </tr>
             </table>
         </form>
-        <a href="admin/admin_home_page.php">Admin</a>   <a href="teacher/teacher_home_page.php">Teacher</a>   <a href="student/student_home_page.php">Student</a>
+        <a href="admin/admin.php">Admin</a>   <a href="teacher/teacher_home_page.php">Teacher</a>   <a href="student/student_home_page.php">Student</a>
     </body>
 </html>
