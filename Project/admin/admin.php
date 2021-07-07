@@ -8,6 +8,9 @@
     if(isset($_POST["home"])){
         $iframesrc = "search_form.php";
     }
+    if(isset($_POST["notification"])){
+        $iframesrc = "notification.php";
+    }
     if(isset($_POST["adminpersonalinfoinsert"])){
         $iframesrc = "admin_info_insert_form.php";
     }
@@ -61,10 +64,13 @@
                                             <span id="admindashboard"><b>Admin Dashboard</b></span><br><form action="" method="POST"><span id="welcome">Welcome </span><input type="submit" name="personalinfo" value="RUBIYET FARDOUS" id="personalinfo"></form>
                                         </td>
                                         <td>        
-                                            <form action="" method="POST"><button type="submit" name="notification" id="icon"><i class="fas fa-bell fa-lg"></i></button></form>   
+                                            <form action="" method="POST"><button type="submit" name="notification" id="icon"><i class="fas fa-bell fa-lg"></i></button></form>  
                                         </td>  
                                         <td>
-                                            <form action="" method="POST"><button type="submit" name="passwordchange" id="icon"><i class="fas fa-cog fa-lg"></i></button></form>
+                                            <button onclick="myFunction()" id="icon1" class="dropbutton"><i class="fas fa-cog fa-lg"></i></button>
+                                            <div id="myDropdown" class="dropdown-content">
+                                            <form action="" method="POST"><button type="submit" name="passwordchange" id="settingsicon">Password Change</button></form>
+                                            </div>
                                         </td>
                                         <td>
                                         <a href="../login_form.php" id="logouticon"><i class="fas fa-sign-out-alt fa-lg"></i></a>
@@ -91,31 +97,40 @@
                                     <div id="fulldropbox">
                                         <button class="dropdownjs" id="button"><i class="fa fa-user-cog fa-lg"></i>&nbsp;&nbsp;Admin Personal Info Insert<i class="fa fa-caret-down fa-lg icon"></i></button>
                                         <div class="dropdowncontainer">
-                                        <form action="" method="POST">
-                                            <input type="submit" name="adminpersonalinfoinsert" value="admin" id=button2>
-                                            <input type="submit" name="adminpersonalinfoinsert" value="admin" id=button2>
-                                            <input type="submit" name="adminpersonalinfoinsert" value="admin" id=button3>
+                                            <form action="" method="POST">
+                                                <button type="submit" name="adminpersonalinfoinsert" id=button2><i class="fas fa-plus-square fa-lg"></i>&nbsp;&nbsp;Insert</button>
+                                                <button type="submit" name="adminpersonalinfoinsert" id=button2><i class="fas fa-edit"></i>&nbsp;&nbsp;Update</button>
+                                                <button type="submit" name="adminpersonalinfoinsert" id=button3><i class="fas fa-trash-alt"></i>&nbsp;&nbsp;&nbsp;Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div id="fulldropbox1">
+                                        <button class="dropdownjs" id="button"><i class="fa fa-chalkboard-teacher fa-lg"></i>&nbsp;&nbsp;Teacher Personal Info Insert<i class="fa fa-caret-down fa-lg icon"></i></button>
+                                        <div class="dropdowncontainer1">
+                                            <form action="" method="POST">
+                                                <button type="submit" name="teacherpersonalinfoinsert" id=button2><i class="fas fa-plus-square fa-lg"></i>&nbsp;&nbsp;Insert</button>
+                                                <button type="submit" name="teacherpersonalinfoinsert" id=button2><i class="fas fa-edit"></i>&nbsp;&nbsp;Update</button>
+                                                <button type="submit" name="teacherpersonalinfoinsert" id=button3><i class="fas fa-trash-alt"></i>&nbsp;&nbsp;&nbsp;Delete</button>
                                         </form>
                                         </div>
                                     </div>
-                                    <div id="fulldropbox">
-                                        <button class="dropdownjs" id="button"><i class="fa fa-user-cog fa-lg"></i>&nbsp;&nbsp;Admin Personal Info Insert<i class="fa fa-caret-down fa-lg icon"></i></button>
-                                        <div class="dropdowncontainer">
-                                        <form action="" method="POST">
-                                            <input type="submit" name="adminpersonalinfoinsert" value="admin" id=button2>
-                                            <input type="submit" name="adminpersonalinfoinsert" value="admin" id=button2>
-                                            <input type="submit" name="adminpersonalinfoinsert" value="admin" id=button3>
-                                        </form>
+                                    <div id="fulldropbox2">
+                                        <button class="dropdownjs" id="button">&nbsp;&nbsp;<i class="fa fa-user-graduate fa-lg"></i></i>&nbsp;&nbsp;Student Personal Info Insert<i class="fa fa-caret-down fa-lg icon"></i></button>
+                                        <div class="dropdowncontainer2">
+                                            <form action="" method="POST">
+                                                <button type="submit" name="studentpersonalinfoinsert" id=button2><i class="fas fa-plus-square fa-lg"></i>&nbsp;&nbsp;Insert</button>
+                                                <button type="submit" name="studentpersonalinfoinsert" id=button2><i class="fas fa-edit"></i>&nbsp;&nbsp;Update</button>
+                                                <button type="submit" name="studentpersonalinfoinsert" id=button3><i class="fas fa-trash-alt"></i>&nbsp;&nbsp;&nbsp;Delete</button>
+                                            </form>
                                         </div>
                                     </div>
-
-                                    <button type="submit" name="teacherpersonalinfoinsert" id="button1"><i class="fa fa-chalkboard-teacher fa-lg"></i>Teacher Personal Info Insert<i class="fa fa-caret-down fa-lg icon"></i></button><br>
-                                    <button type="submit" name="studentpersonalinfoinsert" id="button">&nbsp;<i class="fa fa-user-graduate fa-lg"></i></i>&nbsp;&nbsp;Student Personal Info Insert&emsp;&emsp;&nbsp;<i class="fa fa-caret-down fa-lg"></i></button><br>
-                                    <button type="submit" name="useraccountinsert" id="button">&nbsp;<i class="fa fa-user-circle fa-lg"></i>&nbsp;&nbsp;User Account Insert</button><br>
-                                    <button type="submit" name="courseinsert" id="button">&nbsp;<i class="fa fa-book fa-lg"></i>&nbsp;&nbsp;Course Insert</button><br>
-                                    <button type="submit" name="studententryinthecourse" id="button">&nbsp;<i class="fa fa-list-ul fa-lg"></i>&nbsp;&nbsp;Student Entry In The Course</button><br>
-                                    <button type="submit" name="studententryintheresultsheet" id="button">&nbsp;&nbsp;<i class="fa fa-clipboard-list fa-lg"></i>&nbsp;&nbsp;Student Entry In The Result Sheet</button><br>
-                                    <button type="submit" name="passwordchange" id="button">&nbsp;<i class="fa fa-key fa-lg"></i>&nbsp;&nbsp;Password Change</button><br> 
+                                    <form action="" method="POST">
+                                        <button type="submit" name="useraccountinsert" id="button4">&nbsp;<i class="fa fa-user-circle fa-lg"></i>&nbsp;&nbsp;User Account Insert</button><br>
+                                        <button type="submit" name="courseinsert" id="button4">&nbsp;<i class="fa fa-book fa-lg"></i>&nbsp;&nbsp;Course Insert</button><br>
+                                        <button type="submit" name="studententryinthecourse" id="button4">&nbsp;<i class="fa fa-list-ul fa-lg"></i>&nbsp;&nbsp;Student Entry In The Course</button><br>
+                                        <button type="submit" name="studententryintheresultsheet" id="button4">&nbsp;&nbsp;<i class="fa fa-clipboard-list fa-lg"></i>&nbsp;&nbsp;Student Entry In The Result Sheet</button><br>
+                                        <button type="submit" name="passwordchange" id="button4">&nbsp;<i class="fa fa-key fa-lg"></i>&nbsp;&nbsp;Password Change</button><br> 
+                                    </form>
                                 </td>
                                 <td rowspan="2" colspan="2" width="80%">
                                     <table width="100%" height="815">

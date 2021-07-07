@@ -54,7 +54,14 @@ a:link{
     border: none;
     background-color: rgb(253, 253, 253);
     padding-right: 16px;
-    padding-top: 13px;
+    padding-top: 15px;
+}
+#icon1{
+    color:#2196F3;
+    font-size: 1em;
+    border: none;
+    background-color: rgb(253, 253, 253);
+    padding-right: 16px;
 }
 #logouticon{
     color:#2196F3;
@@ -63,8 +70,15 @@ a:link{
     background-color: rgb(253, 253, 253);
     padding-right: 8px;
 }
-#icondown{
-    text-align: left;
+#settingsicon{
+    color:#2196F3;
+    font-size: 13px;
+    border: none;
+    margin-top: 3px;
+    min-width: 80px;
+    background-color: rgb(253, 253, 253);
+    border: 1px solid gray;
+    border-radius: 5px;
 }
 hr.hr1{
     border: .5px solid #004EA2;
@@ -85,7 +99,7 @@ hr.hr1{
     height: 40px;
     color: white;
     text-align: left;
-    font-size: 16px;
+    font-size: 15px;
     font-family: 'Source Sans Pro', sans-serif;
     background-color: #004EA2;
     border: none;
@@ -110,10 +124,18 @@ hr.hr1{
     display: none;
     height: 135px;
 }
+.dropdowncontainer1 {
+    display: none;
+    height: 135px;
+}
+.dropdowncontainer2 {
+    display: none;
+    height: 135px;
+}
 #button2{
     width: 100%;
     height: 45px;
-    color: #004EA2;
+    color: #2c2b2b;
     text-align: left;
     font-size: 16px;
     font-family: 'Source Sans Pro', sans-serif;
@@ -125,16 +147,40 @@ hr.hr1{
 #button3{
     width: 100%;
     height: 45px;
-    color: #004EA2;
+    color: #2c2b2b;
     text-align: left;
     font-size: 16px;
     font-family: 'Source Sans Pro', sans-serif;
     background-color: #ffffff;
     border: none;
     padding-left: 8px;
+    border-radius: 4px;
+}
+#button4{
+    width: 100%;
+    height: 45px;
+    color: white;
+    text-align: left;
+    font-size: 15px;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #004EA2;
+    border: none;
+    margin-bottom: 5px;
+    margin-right: 5px;
     border-radius: 6px;
+    padding-left: 9px;
 }
 #fulldropbox{
+    margin-bottom: 5px;
+    border-radius: 6px;
+    border: 1px solid #004EA2;
+}
+#fulldropbox1{
+    margin-bottom: 5px;
+    border-radius: 6px;
+    border: 1px solid #004EA2;
+}
+#fulldropbox2{
     margin-bottom: 5px;
     border-radius: 6px;
     border: 1px solid #004EA2;
@@ -144,3 +190,10 @@ hr.hr1{
     padding-right: 8px;
     padding-top: 3px;
 }
+.dropdown-content {
+    height: 15px;
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+  }
+.show {display: block;}
