@@ -1,0 +1,155 @@
+body{
+    background-color: #efefef;
+}
+a{
+    text-decoration: none;
+}
+input:focus {
+    outline: none !important;
+    box-shadow: 0 0 5px #004EA2;
+}
+#table1{
+    background-color: white;
+    width: 360px;
+    height: 385px;
+    margin-top: 295.5px;
+    margin-bottom: 196.5px;
+    margin-left: 775px;
+    margin-right: 785px;
+    border: 1px solid rgb(221, 221, 221);
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+#imgbox{
+    vertical-align: top;
+}
+#aisb_logo1{
+    width: 92px;
+    height: 92px;
+    margin-top: -4px;
+    margin-left: -4px;
+}
+#titlebox{
+    width: 265.328px;
+    height: 86px;
+    vertical-align: top;
+    text-align: center;
+}
+#title1{
+    width: 178.328px;
+    height: 44px;
+    color: rgb(54, 67, 71);
+    font-family: 'SourceSansPro',Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    line-height: 22.5px;
+    padding-top: 5px;
+}
+#title2{
+    padding-top: 4px;
+    width: 178.328px;
+    height: 17px;
+    color: rgb(119, 119, 119);
+    font-family: 'SourceSansPro',Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    line-height: 27.5px;
+}
+#title3{
+    font-family: 'SourceSansPro',Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    vertical-align: top;
+}
+blockquote{
+    height: 80px;
+    border-left-color: rgb(238,238,238);
+    border-left-style: solid;
+    border-left-width: 5px;
+    margin-left: 6px;
+    padding-left: 2px;
+    width: 95%;
+    text-align: center;
+}
+#userid{
+    width: 308px;
+    height: 35px;
+    font-family: 'SourceSansPro',Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    border: 2px solid #D1EDF1;
+    border-radius: 3px;
+    padding-left: 5px;
+}
+#userid:hover{
+    border-color: #497FAF;
+}
+input:focus {
+    border-color: green;
+}
+#useridbox{
+    height: 48px;
+    vertical-align: bottom;
+}
+#password{
+    width: 308px;
+    height: 35px;
+    font-family: 'SourceSansPro',Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    border: 2px solid #D1EDF1;
+    border-radius: 3px;
+    padding-left: 5px;
+}
+#password:hover{
+    border-color: #497FAF;
+}
+#passwordbox{
+    height: 40px;
+    vertical-align: top;
+}
+#login{
+    width: 308px;
+    height: 40px;
+    font-family: 'SourceSansPro',Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    background-color: #497FAF;
+    border: none;
+    color: white;
+    border-radius: 3px;
+}
+#login:hover{
+    background-color: #004EA2;
+}
+#loginbox{
+    height: 40px;
+    vertical-align: top;
+}
+#contact{
+    border: none;
+    color: #1ABAF2;
+    background-color: white;
+    font-family: 'SourceSansPro',Helvetica,Arial,sans-serif;
+    font-size: 14px;
+}
+#contactbox{
+    height: 10px;
+    vertical-align: top;
+}
+#erroruseridbox{
+    height: 0px;
+    color: red;
+    font-size: 14px;
+}
+#errorpasswordbox{
+    height: 0px;
+    color: red;
+    font-size: 14px;
+}
+#errortokenbox{
+    color: #A94442;
+    font-size: 14px;
+}
+#errorcontactbox{
+    height: 30px;
+    color: red;
+    font-size: 13px;
+    vertical-align: bottom;
+}

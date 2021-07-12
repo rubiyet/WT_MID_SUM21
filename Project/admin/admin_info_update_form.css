@@ -28,8 +28,10 @@ select{
 #table2{
     width: 100%;
     height: 100%;
-    padding-top: 10px;
     padding-bottom: 150px;
+}
+#table3{
+    padding-top: 10px;
 }
 #title{
     width: 100%;

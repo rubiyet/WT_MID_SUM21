@@ -1,5 +1,5 @@
 var dropdown = document.getElementsByClassName("dropdownjs");
-var dropdown1 = document.getElementsByClassName("dropdowncontainer1");
+var dropdown1 = document.getElementsByClassName("dropdowncontainer");
 var i;
 
 for (i = 0; i < dropdown.length; i++) {
@@ -19,8 +19,3 @@ function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
-$(function() {
-    $(".dropdowncontainer1").change(function(){
-        $(".dropdowncontainer").hide(); 
-           });
-});

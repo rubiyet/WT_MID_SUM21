@@ -50,6 +50,7 @@
     $error_massage2 = "";
 
     $error = false;
+    $error1 = false;
 
     $day = array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31);
 	$month = array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
@@ -58,14 +59,13 @@
     $religion = array("Muslim","Hindu","Buddhist","Chrustian","other");
     $bloodgroup = array("AB+","AB-","A+","A-","B+","B-","O+","O-");
 
-    if(isset($_POST["insert"])){
-
+    if(isset($_POST["enter"])){
         if(empty($_POST["adminid"])){
-			$error = true;
+			$error1 = true;
 			$error_adminid = "Admin ID required.";
 		}
 		else if(strlen($_POST["adminid"]) != 7){
-			$error = true;
+			$error1 = true;
 			$error_adminid = "Admin Id must be 7 character.";
 		}
 		else{
@@ -88,21 +88,72 @@
                     }
                 }
                 else{
-                    $error = true;
+                    $error1 = true;
                     $error_adminid = "Admin Id like as (**-1***)";
                 }
                 if($arr_adminid[3] != "1"){
+                    $error1 = true;
                     $error_adminid = "Admin Id like as (**-1***)";
                 }
             }
 			if($hypen > 1 || $bug > 0){
-				$error = true;
+				$error1 = true;
 				$error_adminid = "User Id like as (**-1***)";
 			}
 			else{
 				$adminid = $_POST["adminid"];
 			}	
 		}
+        if(!$error1){
+            $query =  "select * from admin where userid = '$adminid'";
+            if($connect){
+                if($connectqurey = mysqli_query($connect,$query)){
+                    if($admin = mysqli_fetch_assoc($connectqurey)){
+                        $id = $admin["id"];
+                        $name = $admin["name"];
+                        $salary = $admin["salary"];
+                        $email = $admin["email"];
+                        $gender = $admin["gender"];
+                        $birthday = $admin["birthday"];
+                        $birthdayarray = explode(" ",$birthday);
+                        $inputbdday = $birthdayarray[0];
+                        $inputbdmonth = $birthdayarray[1];
+                        $inputbdyear = $birthdayarray[2];
+                        $inputnationality = $admin["nationality"];
+                        $inputreligion = $admin["religion"];
+                        $inputbloodgroup = $admin["bloodgroup"];
+                        $fathername = $admin["fathername"];
+                        $mothername = $admin["mothername"];
+                        $joiningdate = $admin["joiningdate"];
+                        $joiningdatearray = explode(" ",$joiningdate);
+                        $inputjday = $joiningdatearray[0];
+                        $inputjmonth = $joiningdatearray[1];
+                        $inputjyear = $joiningdatearray[2];
+                        $leftdate = $admin["leftdate"];
+                        $leftdatearray = explode(" ",$leftdate);
+                        $inputlday = $leftdatearray[0];
+                        $inputlmonth = $leftdatearray[1];
+                        $inputlyear = $leftdatearray[2];
+                        $qualificationsarray = $admin["qualification"];
+                        $qualifications = explode(" ",$qualificationsarray);
+                        $presentaddress = $admin["presentaddress"];
+                        $parmanentaddress = $admin["parmanentaddress"];
+                        $contactnumber = $admin["contactnumber"];
+                        $image = $admin["img"];
+                    }
+                }
+                else{
+                    echo mysqli_errno($connect);
+                }
+            }
+            else{
+                echo mysqli_errno($connect);
+            }
+        }
+    }
+
+    if(isset($_POST["insert"])){
+        $userid= $admin["userid"];;
         if(empty($_POST["name"])){
             $error = true;
             $error_name = "Must be need Name";
@@ -352,7 +403,7 @@
             $joiningdate = $inputjday." ".$inputjmonth." ".$inputjyear;
             $leftdate = $inputlday." ".$inputlmonth." ".$inputlyear;
             $qualificationsstring = implode(", ",$qualifications);
-            $query = "insert into admin values(Null,'$adminid','$name','$salary','$email','$gender','$birthday','$inputnationality','$inputreligion','$inputbloodgroup','$fathername','$mothername','$joiningdate','$leftdate','$qualificationsstring','$presentaddress','$parmanentaddress','$contactnumber','$filename')";
+            //$query = "insert into admin values(Null,'$adminid','$name','$salary','$email','$gender','$birthday','$inputnationality','$inputreligion','$inputbloodgroup','$fathername','$mothername','$joiningdate','$leftdate','$qualificationsstring','$presentaddress','$parmanentaddress','$contactnumber','$filename')";
             if($connect){
                 if(mysqli_query($connect,$query)){
                     $error_massage2 = "Successfully added Admin ID ".$adminid;
@@ -411,53 +462,10 @@
     if(isset($_POST["sameaspresentaddress"])){
         $hide = 1;
     }
-
-    if(isset($_POST["clear"])){
-        $adminid = "";
-        $error_adminid = "";
-        $name = "";
-        $error_name = "";
-        $salary = "";
-        $error_salary = "";
-        $email = "";
-        $error_email = "";
-        $gender ="";
-        $error_gender = "";
-        $inputbdday="";
-        $inputbdmonth="";
-        $inputbdyear="";
-        $error_inputbddaymonthyear="";
-        $inputnationality = "";
-        $error_nationality = "";
-        $inputreligion = "";
-        $error_religion = "";
-        $inputbloodgroup = "";
-        $error_inputbloodgroup = "";
-        $fathername = "";
-        $error_fathername = "";
-        $mothername = "";
-        $error_mothername = "";
-        $inputjday = "";
-        $inputjmonth = "";
-        $inputjyear = "";
-        $error_inputjdaymonthyear = "";
-        $inputlday = "";
-        $inputlmonth = "";
-        $inputlyear = "";
-        $qualifications = array();
-        $error_qualifications = "";
-        $error_inputldaymonthyear = "";
-        $presentaddress = "";
-        $error_presentaddress = "";
-        $parmanentaddress = "";
-        $error_parmanentaddress = "";
-        $contactnumber = "";
-        $error_contactnumber = "";
-    }
 ?>
 <html>
     <head>
-        <link rel="stylesheet" href="admin_info_insert_form.css">
+        <link rel="stylesheet" href="admin_info_update_form.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
@@ -466,24 +474,34 @@
         <form action = "" method = "POST" enctype="multipart/form-data">
             <table id="table1">
                 <tr>
-                    <td colspan="3" id="title" valign="center">ADMIN PERSONAL INFORMATION INSERT</td>
+                    <td colspan="3" id="title" valign="center">ADMIN PERSONAL INFORMATION UPDATE</td>
+                </tr>
+                <tr>
+                    <td>
+                        <table id="table3">
+                        <form action = "" method = "POST" enctype="multipart/form-data">
+                            <tr>
+                                <td align="right" width="44%" id="subtitle">Admin ID: </td>
+                                <td width=""><input type="text" name="adminid" placeholder="**-1***"value="<?php echo $adminid; ?>"></td>
+                                <td><input type="submit" name="enter" value="Enter" id="button"></td>
+                                <td width="45%"><?php echo $error_adminid?></td>
+                            </tr>
+                        </form>
+                        </table>
+                    </td>
                 </tr>
                 <tr>
                     <td>
                         <table id="table2">
+                        <form action = "" method = "POST" enctype="multipart/form-data">
                             <tr>
-                                    <td align="right" width="50%" id="subtitle">Admin ID: </td>
-                                    <td width=""><input type="text" name="adminid" placeholder="**-1***"value="<?php echo $adminid; ?>"></td>
-                                    <td width="50%"><?php echo $error_adminid?></td>
-                                </tr>
-                            <tr>
-                                <td align="right" id="subtitle">Name: </td>
-                                <td><input type="text" name="name" value="<?php echo $name?>"></td>
-                                <td><?php echo $error_name;?></td>
+                                <td align="right" id="subtitle" width="50%">Name: </td>
+                                <td><input type="text" name="name" value="<?php if(!empty($name)){echo $name;}?>"></td>
+                                <td width="50%"><?php echo $error_name;?></td>
                             </tr>
                             <tr>
                                 <td align="right" id="subtitle">Salary: </td>
-                                <td><input type="text" name="salary" value="<?php echo $salary?>"></td>
+                                <td><input type="text" name="salary" value="<?php if(!empty($salary)){echo $salary;}?>"></td>
                                 <td><?php echo $error_salary;?></td>
                             </tr>
                             <tr>
@@ -616,11 +634,12 @@
                                 <td></td>
                                 <td id="buttonbox">
                                     <input type="submit" name="insert" value="Insert" id="button">&emsp;<input type="submit" name="clear" value="Clear" id="button">
+                                </td>
                             </tr>
+                        </form>
                         </table>
                     </td>
                 </tr>
             </table>
-        </form>
     </body>
 </html>

@@ -69,6 +69,7 @@ a:link{
     border: none;
     background-color: rgb(253, 253, 253);
     padding-right: 8px;
+    padding-top: 15px;
 }
 #settingsicon{
     color:#2196F3;
@@ -175,7 +176,7 @@ hr.hr1{
     border-radius: 6px;
     border: 1px solid #004EA2;
 }
-#fulldropbox1{
+#fulldropbox1   {
     margin-bottom: 5px;
     border-radius: 6px;
     border: 1px solid #004EA2;

@@ -1,6 +1,19 @@
 <?php
+
+    include '../db_config.php';
+
+    if(!isset($_COOKIE["__RequestVerificationToken"])){
+        header("Location: ../portal.php");
+    }
+    else{
+        $id = $_COOKIE["__RequestVerificationToken"];
+    }
+
+    $query =  "select * from admin inner join alluser on admin.userid = alluser.userid where alluser.id = $id";
+    $connectqurey = mysqli_query($connect,$query);
+    $admin = mysqli_fetch_assoc($connectqurey);
+
     $iframesrc = "";
-    $personalinfo = "";
 
     if(isset($_POST["personalinfo"])){
         $iframesrc = "personal_info.php";
@@ -13,6 +26,9 @@
     }
     if(isset($_POST["adminpersonalinfoinsert"])){
         $iframesrc = "admin_info_insert_form.php";
+    }
+    if(isset($_POST["adminpersonalinfoupdate"])){
+        $iframesrc = "admin_info_update_form.php";
     }
     if(isset($_POST["teacherpersonalinfoinsert"])){
         $iframesrc = "../18-37646-1/admin/teacher_info.php";
@@ -35,6 +51,13 @@
     if(isset($_POST["passwordchange"])){
         $iframesrc = "../16-31722-1/admin/passwordchange.php";
     }
+    if(isset($_POST["logout"])){
+        setcookie("__RequestVerificationToken","",time()-1,"/");
+        header("Location: ../portal.php");
+    }
+    if(!isset($_COOKIE["__RequestVerificationToken"])){
+        header("Location: ../portal.php");
+    }
 ?>
 <html>
     <head>
@@ -45,7 +68,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
     </head>
     <body>
         <table width="100%">
@@ -61,7 +84,7 @@
                                         <td align="left"><img src="../resources/aisb_logo2.png" id="logo2"></td>
                                         <td align="left" width="50%"><a href="admin.php"><span id="aiubtitle1">AISB</span><br><span id="aiubtitle2">PORTAL</span></a></td>
                                         <td align="right" width="50%">
-                                            <span id="admindashboard"><b>Admin Dashboard</b></span><br><form action="" method="POST"><span id="welcome">Welcome </span><input type="submit" name="personalinfo" value="RUBIYET FARDOUS" id="personalinfo"></form>
+                                            <span id="admindashboard"><b>Admin Dashboard</b></span><br><form action="" method="POST"><span id="welcome">Welcome </span><input type="submit" name="personalinfo" value="<?php if(!empty($admin["name"])){echo $admin["name"];} ?>" id="personalinfo"></form>
                                         </td>
                                         <td>        
                                             <form action="" method="POST"><button type="submit" name="notification" id="icon"><i class="fas fa-bell fa-lg"></i></button></form>  
@@ -73,7 +96,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                        <a href="../login_form.php" id="logouticon"><i class="fas fa-sign-out-alt fa-lg"></i></a>
+                                            <form action="" method="POST"><button type="submit" name="logout" id="logouticon"><i class="fas fa-sign-out-alt fa-lg"></i></button></form>
                                         </td>
                                         <td>
                                             <form action="" method="POST"><button type="submit" name="home" id="icon"><i class="fas fa-home fa-lg"></i></button></form>
@@ -99,7 +122,7 @@
                                         <div class="dropdowncontainer">
                                             <form action="" method="POST">
                                                 <button type="submit" name="adminpersonalinfoinsert" id=button2><i class="fas fa-plus-square fa-lg"></i>&nbsp;&nbsp;Insert</button>
-                                                <button type="submit" name="adminpersonalinfoinsert" id=button2><i class="fas fa-edit"></i>&nbsp;&nbsp;Update</button>
+                                                <button type="submit" name="adminpersonalinfoupdate" id=button2><i class="fas fa-edit"></i>&nbsp;&nbsp;Update</button>
                                                 <button type="submit" name="adminpersonalinfoinsert" id=button3><i class="fas fa-trash-alt"></i>&nbsp;&nbsp;&nbsp;Delete</button>
                                             </form>
                                         </div>
