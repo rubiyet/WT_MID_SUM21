@@ -30,6 +30,9 @@
     if(isset($_POST["adminpersonalinfoupdate"])){
         $iframesrc = "admin_info_update_form.php";
     }
+    if(isset($_POST["adminpersonalinfodelete"])){
+        $iframesrc = "admin_info_delete_form.php";
+    }
     if(isset($_POST["teacherpersonalinfoinsert"])){
         $iframesrc = "../18-37646-1/admin/teacher_info.php";
     }
@@ -123,7 +126,7 @@
                                             <form action="" method="POST">
                                                 <button type="submit" name="adminpersonalinfoinsert" id=button2><i class="fas fa-plus-square fa-lg"></i>&nbsp;&nbsp;Insert</button>
                                                 <button type="submit" name="adminpersonalinfoupdate" id=button2><i class="fas fa-edit"></i>&nbsp;&nbsp;Update</button>
-                                                <button type="submit" name="adminpersonalinfoinsert" id=button3><i class="fas fa-trash-alt"></i>&nbsp;&nbsp;&nbsp;Delete</button>
+                                                <button type="submit" name="adminpersonalinfodelete" id=button3><i class="fas fa-trash-alt"></i>&nbsp;&nbsp;&nbsp;Delete</button>
                                             </form>
                                         </div>
                                     </div>

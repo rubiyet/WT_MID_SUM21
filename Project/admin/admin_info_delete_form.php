@@ -47,7 +47,6 @@
     $contactnumber = "";
     $error_contactnumber = "";
     $filename = "";
-    $filename1 = "";
     $folder = "";
     $image = "";
     $error_img = "";
@@ -430,6 +429,9 @@
         else{
             $qualifications = $_POST["qualifications"];
         }
+        if(!empty($filename1)){
+            $filename1 = $admin["img"];
+        }
         if(isset($_FILES['image'])){
             $filename = $_FILES['image']['name'];
             $filesize =$_FILES['image']['size'];
@@ -457,10 +459,10 @@
             $joiningdate1 = $inputjday." ".$inputjmonth." ".$inputjyear;
             $leftdate1 = $inputlday." ".$inputlmonth." ".$inputlyear;
             $qualificationsstring1 = implode(", ",$qualifications);
-            $query = "update admin set userid='$adminid', name='$name', salary='$salary', gender='$gender', birthday='$birthday1', email='$email',nationality='$inputnationality', religion='$inputreligion', bloodgroup='$inputbloodgroup', fathername='$fathername', img='$filename' where id= $id";
+            $query = "delete from admin where id= $id";
             if($connect){
                 if(mysqli_query($connect,$query)){
-                    $error_massage2 = "Successfully update Admin ID ".$adminid;
+                    $error_massage2 = "Successfully Delete Admin ID ".$adminid;
                     $adminid = "";
                     $error_adminid = "";
                     $name = "";
@@ -505,7 +507,7 @@
                 }
                 else{
                     if(mysqli_errno($connect)){
-                        $error_massage1 = "Admin ID ".$adminid." already exists";
+                        $error_massage1 = "Admin ID ".$adminid." Not deleted";
                     }
                 }
             }
@@ -529,7 +531,7 @@
         <form action = "" method = "POST" enctype="multipart/form-data">
             <table id="table1">
                 <tr>
-                    <td colspan="4" id="title" valign="center">ADMIN PERSONAL INFORMATION UPDATE</td>
+                    <td colspan="4" id="title" valign="center">ADMIN PERSONAL INFORMATION DELETE</td>
                 </tr>
                 <tr>
                     <td>
@@ -554,147 +556,143 @@
                         <form action = "" method = "POST" enctype="multipart/form-data">
                             <tr>
                                 <td></td>
-                                <td width="20%"><input type="text" name="id" placeholder="**-1***" value="<?php if(!empty($id)){echo $id;}?>"></td>
+                                <td width="20%"><input type="hidden" name="id" placeholder="**-1***" value="<?php if(!empty($id)){echo $id;}?>"></td><input type="hidden" name="image1" value="<?php if(!empty($image)){echo $image;}?>"></td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td width="20%"><input type="text" name="image1" value="<?php if(!empty($image)){echo $image;}?>"></td>
-                            </tr>
-                            <tr>
-                                <td align="right" width="38%" id="subtitle">Admin ID<span id="star">* </span>: </td>
-                                <td width="20%"><input type="text" name="adminid" placeholder="**-1***"value="<?php if(!empty($adminid)){echo $adminid;}?>"></td>
+                                <td align="right" width="38%" id="subtitle">Admin ID: </td>
+                                <td width="20%"><?php if(!empty($adminid)){echo $adminid;}?></td>
                                 <td width="30%" align="left"><?php echo $error_adminid?></td>
                                 <td width="12%" rowspan="5" width="" id="imagebox">
                                     <img src="<?php if(!empty($admin["img"])){ echo "image/admin/".$admin["img"];} else{ echo "";}?><?php if(!empty($filename)){ echo "image/admin/".$filename;} else{ echo "";}?>" id="image1">
                                 </td>
                             </tr>
                             <tr>
-                                <td align="right" id="subtitle">Name<span id="star">* </span>: </td>
-                                <td><input type="text" name="name" value="<?php if(!empty($name)){echo $name;}?>"></td>
-                                <td><?php echo $error_name;?></td>
-                            </tr>
-                            <tr>
-                                <td align="right" id="subtitle">Salary<span id="star">* </span>: </td>
-                                <td><input type="text" name="salary" value="<?php if(!empty($salary)){echo $salary;}?>"></td>
-                                <td><?php echo $error_salary;?></td>
-                            </tr>
-                            <tr>
-                                <td align="right" id="subtitle">Gender<span id="star">* </span>: </td>
-                                <td><input type="radio" value="Male" <?php if($gender=="Male") echo "checked"; ?> name="gender"> <span id="subtitle1">Male</span> <input name="gender" <?php if($gender=="Female") echo "checked"; ?> value="Female" type="radio"> <span id="subtitle1">Female</span> </td>
-                                <td><?php echo $error_gender;?></td>
-                            </tr>
-                            <tr>
-                                <td align="right" id="subtitle">Birth Date<span id="star">* </span>: </td>
+                                <td align="right" id="subtitle">
+                                    Name: 
+                                </td>
                                 <td>
-                                    <select name="inputbdday"><option disabled selected>Day</option><?php foreach($day as $d){if($d == $inputbdday) echo "<option selected>$d</option>"; else echo "<option>$d</option>";}?></select> <select name="inputbdmonth"><option disabled selected>Month</option><?php foreach($month as $m){if($m == $inputbdmonth) echo "<option selected>$m</option>"; else  echo "<option>$m</option>";}?></select> <select name="inputbdyear"><option disabled selected>Year</option><?php foreach($year as $y){if($y == $inputbdyear) echo "<option selected>$y</option>"; else  echo "<option>$y</option>";}?></select>
+                                    <?php if(!empty($admin["name"])){echo $admin["name"];} ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" id="subtitle">
+                                    Salary: 
+                                </td>
+                                <td>
+                                    <?php if(!empty($admin["salary"])){echo $admin["salary"];} ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" id="subtitle">
+                                    Email: 
+                                </td>
+                                <td>
+                                    <?php if(!empty($admin["email"])){echo $admin["email"];} ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" id="subtitle">
+                                    Gender: 
+                                </td>
+                                <td>
+                                    <?php if(!empty($admin["gender"])){echo $admin["gender"];} ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" id="subtitle">
+                                    Birth Date: 
+                                </td>
+                                <td>
+                                    <?php if(!empty($admin["birthday"])){echo $admin["birthday"];} ?>
                                 </td>   
-                                <td><?php echo $error_inputbddaymonthyear;?></td>
                             <tr>
                             <tr>
-                                <td align="right" id="subtitle">Email<span id="star">* </span>: </td>
-                                <td><input type="text" name="email" placeholder="someone@gmail.com"value="<?php echo $email; ?>" ></td>
-                                <td colspan="2"><?php echo $error_email;?></td>
-                            </tr>
-                            <tr>
-                                <td align="right" id="subtitle">Nationality<span id="star">* </span>: </td>
-                                <td><select name="inputnationality"><option disabled selected>Select</option><?php foreach($nationality as $n){if($n == $inputnationality) echo "<option selected>$n</option>"; else echo "<option>$n</option>";}?></select></td>
-                                <td><?php echo $error_nationality;?></td>
-                            </tr>
-                            <tr>
-                                <td align="right" id="subtitle">Religion<span id="star">* </span>: </td>
-                                <td>
-                                    <select name="inputreligion"><option disabled selected>Select</option><?php foreach($religion as $r){if($r == $inputreligion) echo "<option selected>$r</option>"; else echo "<option>$r</option>";}?></select>
+                                <td align="right" id="subtitle">
+                                    Nationality: 
                                 </td>
-                                <td><?php echo $error_religion;?></td>
+                                <td>
+                                    <?php if(!empty($admin["nationality"])){echo $admin["nationality"];} ?>  
+                                </td>
                             </tr>
                             <tr>
                                 <td align="right" id="subtitle">
-                                    Blood Group<span id="star">* </span>:
+                                    Religion: 
                                 </td>
                                 <td>
-                                <select name="inputbloodgroup"><option disabled selected>Select</option><?php foreach($bloodgroup as $bg){if($bg == $inputbloodgroup) echo "<option selected>$bg</option>"; else echo "<option>$bg</option>";}?></select>
+                                    <?php if(!empty($admin["religion"])){echo $admin["religion"];} ?>  
                                 </td>
-                                <td><?php echo $error_inputbloodgroup;?></td>
                             </tr>
                             <tr>
                                 <td align="right" id="subtitle">
-                                    Father Name<span id="star">* </span>: 
+                                    Blood Group:
                                 </td>
                                 <td>
-                                    <input type="text" name="fathername" value="<?php echo $fathername?>">
+                                    <?php if(!empty($admin["bloodgroup"])){echo $admin["bloodgroup"];} ?>
                                 </td>
-                                <td><?php echo $error_fathername;?></td>
                             </tr>
                             <tr>
                                 <td align="right" id="subtitle">
-                                    Mother Name<span id="star">* </span>: 
+                                    Father Name: 
                                 </td>
                                 <td>
-                                    <input type="text" name="mothername" value="<?php echo $mothername?>">
+                                    <?php if(!empty($admin["fathername"])){echo $admin["fathername"];} ?>
                                 </td>
-                                <td><?php echo $error_mothername;?></td>
                             </tr>
                             <tr>
                                 <td align="right" id="subtitle">
-                                Joining Date<span id="star">* </span>:
+                                    Mother Name: 
                                 </td>
                                 <td>
-                                    <select name="inputjday"><option disabled selected>Day</option><?php foreach($day as $d){if($d == $inputjday) echo "<option selected>$d</option>"; else echo "<option>$d</option>";}?></select> <select name="inputjmonth"><option disabled selected>Month</option><?php foreach($month as $m){if($m == $inputjmonth) echo "<option selected>$m</option>"; else  echo "<option>$m</option>";}?></select> <select name="inputjyear"><option disabled selected>Year</option><?php foreach($year as $y){if($y == $inputjyear) echo "<option selected>$y</option>"; else  echo "<option>$y</option>";}?></select>
+                                    <?php if(!empty($admin["mothername"])){echo $admin["mothername"];} ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" id="subtitle">
+                                Joining Date:
+                                </td>
+                                <td>
+                                    <?php if(!empty($admin["joiningdate"])){echo $admin["joiningdate"];} ?>
+                                </td>
+                            <tr>
+                            <tr>
+                                <td align="right" id="subtitle">
+                                    Left Date:
+                                </td>
+                                <td>
+                                    <?php if(!empty($admin["leftdate"])){echo $admin["leftdate"];} ?>
                                 </td>   
-                                <td colspan="2"><?php echo $error_inputjdaymonthyear;?></td>
                             <tr>
                             <tr>
                                 <td align="right" id="subtitle">
-                                Left Date<span id="star">* </span>:
+                                    Qualification:
                                 </td>
                                 <td>
-                                    <select name="inputlday"><option disabled selected>Day</option><?php foreach($day as $d){if($d == $inputlday) echo "<option selected>$d</option>"; else echo "<option>$d</option>";}?></select> <select name="inputlmonth"><option disabled selected>Month</option><?php foreach($month as $m){if($m == $inputlmonth) echo "<option selected>$m</option>"; else  echo "<option>$m</option>";}?></select> <select name="inputlyear"><option disabled selected>Year</option><?php foreach($year as $y){if($y == $inputlyear) echo "<option selected>$y</option>"; else  echo "<option>$y</option>";}?></select>
-                                </td>   
-                                <td><?php echo $error_inputldaymonthyear;?></td>
-                            <tr>
-                            <tr>
-                                <td align="right" id="subtitle">
-                                    Qualification<span id="star">* </span>:
+                                    <?php if(!empty($admin["qualification"])){echo $admin["qualification"];} ?>
                                 </td>
-                                <td><input type="checkbox" name="qualifications[]" value="SSC" <?php foreach($qualifications as $qu){if($qu == "SSC") echo "checked";} ?>> <span id="subtitle1">SSC</span> <input type="checkbox" name="qualifications[]" value="HSC" <?php foreach($qualifications as $qu){if($qu == "HSC") echo "checked";} ?>> <span id="subtitle1">HSC</span> <input type="checkbox" name="qualifications[]" value="Other" <?php foreach($qualifications as $qu){if($qu == "Other") echo "checked";} ?>> <span id="subtitle1">Other</span></td>
-                                <td><?php echo $error_qualifications;?></td>
                             </tr>
                             <tr>
                                 <td align="right" id="subtitle">
-                                    Present Address<span id="star">* </span>: 
+                                    Present Address: 
                                 </td>
-                                <td>
-                                    <input type="text" name="presentaddress" value="<?php echo $presentaddress?>">
+                                <td colspan="2">
+                                    <?php if(!empty($admin["presentaddress"])){echo $admin["presentaddress"];} ?>
                                 </td>
-                                <td colspan="2"><?php echo $error_presentaddress;?></td>
                             </tr>
                             <tr>
                                 <td align="right" id="subtitle">
-                                    Parmanent address<span id="star">* </span>: 
+                                    Parmanent address: 
                                 </td>
-                                <td>
-                                    <input type="checkbox" name="sameaspresentaddress" <?php if($presentaddress != ""){if($presentaddress == $parmanentaddress) echo "checked";}?>> <span id="sameaspresentaddress">Same as present address</span> <br>
-                                    <input type="text" name="parmanentaddress" value="<?php echo $parmanentaddress?>">
+                                <td colspan="2">
+                                    <?php if(!empty($admin["parmanentaddress"])){echo $admin["parmanentaddress"];} ?>
                                 </td>
-                                <td colspan="2"><?php echo $error_parmanentaddress;?></td>
                             </tr>
                             <tr>
                                 <td align="right" id="subtitle">
-                                    Contact Number<span id="star">* </span>: 
+                                    Contact Number: 
                                 </td>
                                 <td>
-                                    <input type="text" name="contactnumber" value="<?php echo $contactnumber?>">
+                                    <?php if(!empty($admin["contactnumber"])){echo $admin["contactnumber"];} ?> 
                                 </td>
-                                <td colspan="2"><?php echo $error_contactnumber;?></td>
-                            </tr>
-                            <tr>
-                                <td align="right" id="subtitle">
-                                    Image : 
-                                </td>
-                                <td>
-                                    <input type="file" name="image" id="image">
-                                </td>
-                                <td><?php echo $error_img;?></td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -707,7 +705,7 @@
                             <tr>
                                 <td></td>
                                 <td id="buttonbox">
-                                    <input type="submit" name="insert" value="Update" id="button">&emsp;<input type="submit" name="clear" value="Clear" id="button">
+                                    <input type="submit" name="insert" value="Delete" id="button">&emsp;<input type="submit" name="clear" value="Clear" id="button">
                                 </td>
                             </tr>
                         </form>
