@@ -2,6 +2,8 @@
 
     include 'header.php';
 
+    getcourseupdate($courseidforUD);
+
 ?>
 <html>
     <head>
@@ -23,7 +25,7 @@
                             <td width="77%" valign="top">
                                 <table id="frame">
                                     <tr>
-                                        <td colspan="3" id="title" valign="center">COURSE INSERT</td>
+                                        <td colspan="3" id="title" valign="center">COURSE UPDATE</td>
                                     </tr>
                                     <tr>
                                         <td valign="top">
@@ -58,7 +60,7 @@
                                                     <tr>
                                                         <td></td>
                                                         <td align="center">
-                                                            <input type="Submit" name="courseinsert" value="Insert" id="button10">
+                                                            <input type="Submit" name="courseupdate" value="Update" id="button10">&emsp;<input type="Submit" name="backcourseupdate" value="Back" id="button10">
                                                         </td>
                                                     </tr>
                                                 </form>

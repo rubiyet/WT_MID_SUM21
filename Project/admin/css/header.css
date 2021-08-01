@@ -1,0 +1,85 @@
+a:link{
+    text-decoration: none;
+}
+#headertable{
+    border: 2px solid #1f81e9;
+    border-radius: 5px;
+    padding: 4px;
+}
+#logo1{
+    width: 90px;
+    height: 90px;
+}
+#logo2{
+    height: 90px;
+    margin-right: 2px;
+}
+#aiubtitle1{
+    font-size: 47px;
+    color:#004EA2;
+    font-weight: bold;
+}
+#aiubtitle2{
+    font-size: 25px;
+    color:grey;
+    letter-spacing: 3px;
+
+}
+#admindashboard{
+    color: rgb(110, 87, 87);
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    padding-right: 8px;
+}
+#personalinfo{
+    font-size: 16px;
+    color:#2196F3;
+    font-family: 'Source Sans Pro', sans-serif;
+    border: none;
+    background-color: rgb(253, 253, 253);
+    padding-right: 8px;
+}
+#welcome{
+    font-size: 17px;
+    font-family: 'Source Sans Pro', sans-serif;
+    color:#2196F3; 
+    padding-right: 0%;
+}
+
+#headericon{
+    color:#2196F3;
+    font-size: 1em;
+    border: none;
+    background-color: rgb(253, 253, 253);
+    padding-right: 8px;
+}
+#headericon1{
+    color:#2196F3;
+    font-size: 1em;
+    border: none;
+    background-color: rgb(253, 253, 253);
+    padding-right: 8px;
+    padding-top: 17px;
+}
+#settingsicon{
+    color:#2196F3;
+    font-size: 13px;
+    border: none;
+    margin-top: 3px;
+    min-width: 80px;
+    background-color: rgb(253, 253, 253);
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+#personalinfo:hover, #headericon:hover, #headericon1:hover, #logouticon:hover{
+    color: gray;
+}
+.dropdown-content {
+    height: 15px;
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+  }
+.show {display: block;}

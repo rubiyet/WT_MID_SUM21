@@ -1,6 +1,6 @@
 <?php
 
-	include '../../db_config.php';
+	include '../../model/db_config.php';
 
 	$userid = "";
 	$error_userid = "";

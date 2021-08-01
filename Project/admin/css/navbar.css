@@ -1,0 +1,100 @@
+#button{
+    width: 100%;
+    height: 40px;
+    color: white;
+    text-align: left;
+    font-size: 15px;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #004EA2;
+    border: none;
+    margin-right: 5px;
+    border-radius: 4px;
+    padding-left: 8px;
+}
+#button1{
+    width: 100%;
+    height: 45px;
+    color: white;
+    text-align: left;
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #004EA2;
+    border: none;
+    margin-right: 5px;
+    border-radius: 4px;
+    padding-left: 11px;
+}
+#dropdowncontainer {
+    display: none;
+    height: 135px;
+}
+#dropdowncontainer1{
+    display: none;
+    height: 135px;
+}
+#dropdowncontainer2{
+    display: none;
+    height: 135px;
+}
+#dropdowncontainer3{
+    display: none;
+    height: 135px;
+}
+#button2{
+    width: 100%;
+    height: 45px;
+    color: #2c2b2b;
+    text-align: left;
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #ffffff;
+    border: none;
+    padding-left: 8px;
+    border-bottom: 1px solid gray;
+}
+#button3{
+    width: 100%;
+    height: 45px;
+    color: #2c2b2b;
+    text-align: left;
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #ffffff;
+    border: none;
+    padding-left: 8px;
+    border-radius: 4px;
+}
+#button4{
+    width: 100%;
+    height: 45px;
+    color: white;
+    text-align: left;
+    font-size: 15px;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #004EA2;
+    border: none;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    border-radius: 6px;
+    padding-left: 9px;
+}
+#fulldropbox{
+    margin-bottom: 5px;
+    border-radius: 6px;
+    border: 1px solid #004EA2;
+}
+#fulldropbox1   {
+    margin-bottom: 5px;
+    border-radius: 6px;
+    border: 1px solid #004EA2;
+}
+#fulldropbox2{
+    margin-bottom: 5px;
+    border-radius: 6px;
+    border: 1px solid #004EA2;
+}
+.icon {
+    float: right;
+    padding-right: 8px;
+    padding-top: 3px;
+}

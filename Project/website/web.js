@@ -22,11 +22,17 @@ window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
     if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
-      document.getElementsByClassName("circleimg").style.clientWidth = 50+"px";
-      document.getElementsByClassName("circleimg").style.clientHeight = 50+"px";
+        document.getElementById("centered").style.display = "none";
+        document.getElementById("centered1").style.display = "block";
+        document.getElementById("top-bar-menu1-big").style.display = "none";
+        document.getElementById("top-bar-menu1-small").style.display = "block";
     } 
     else {
-        document.getElementsByClassName("circleimg").style.width = "120px";
-        document.getElementsByClassName("circleimg").style.height = "120px";
+        document.getElementById("centered").style.display = "block";
+        document.getElementById("centered1").style.display = "none";
+        document.getElementById("top-bar-menu1-small").style.display = "none";
+        document.getElementById("top-bar-menu1-big").style.display = "block";
     }
 }
+
+  

@@ -1,70 +1,9 @@
 <?php
 
-    include 'db_config.php';    
+    include 'controller/users_controller.php';   
     
-    $userid = "";
-    $error_userid = "";
-    $password = "";
-    $error_password = "";
-    $error_contact = "";
-    $error_token = "";
-
-    $error = false;
-
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        if(isset($_POST["login"])){
-            if(empty($_POST["userid"])){
-                $error = true;
-                $error_userid = "The User Name field is required.";
-            }
-            else{
-                    $userid = $_POST["userid"];
-            }
-            if(empty($_POST["password"])){
-                $error = true;
-                $error_password = "The Password field is required.";
-            }
-            else{
-                    $password = $_POST["password"];
-            }
-            if(!$error){
-                $query = "select * from alluser";
-                $connectqurey = mysqli_query($connect,$query);
-                while($alluser = mysqli_fetch_assoc($connectqurey)){
-                    if($alluser["userid"] == $userid && $alluser["password"] == $password){
-                        if($alluser["type"] == "Admin" && $alluser["status"] == "Active"){
-                            setcookie("__RequestVerificationToken",$alluser["id"],time()+12000,"/");
-                            header("Location: admin/admin.php");
-                        }
-                        else{
-                            $error_token = "User Account Block, Contact your administator.";
-                        }
-                        if($alluser["type"] == "Teacher" && $alluser["status"] == "Active"){
-                            setcookie("__RequestVerificationToken",$alluser["id"],time()+120,"/");
-                            header("Location: teacher/teacher.php");
-                        }
-                        else{
-                            $error_token = "User Account Block, Contact your administator.";
-                        }
-                        if($alluser["type"] == "Student" && $alluser["status"] == "Active"){
-                            setcookie("__RequestVerificationToken",$alluser["id"],time()+120,"/");
-                            header("Location: student/student.php");
-                        }
-                        else{
-                            $error_token = "User Account Blocked, Contact Your Administator.";
-                        }
-                    }
-                    else{
-                        $error_token = "Invalid Username or Password.";
-                    }
-                }
-            }
-        }
-        if(isset($_POST["contact"])){
-            $error_contact = "Contact Your Administator";
-        }
-    }
 ?>
+
 <html>
     <head>
         <title>PORTAL | AISB</title>
@@ -74,7 +13,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/> 
     </head>
     <body>
         <form action="" method="POST">
@@ -84,22 +23,22 @@
                     <td id="titlebox" align="left" valign="top"><a href="website/web.html"><blockquote><span id="title1">AMERICAN INTERNATIONAL SCHOOL-BANGLADESH</span><br><span id="title2">-- where leaders are created.</span></blockquote></a></td>                  
                 </tr>
                 <tr>
-                    <td colspan="5" align="center" id="errortokenbox" <?php if(!empty($error_token)){ echo "height=45px";}?>><?php echo $error_token?></td>
+                    <td colspan="5" align="center" id="errortokenbox" <?php if(!empty($error_authenticateUser)){ echo "height=45px";}?>><?php echo $error_authenticateUser?></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center"><span id="title3">Sign in with your organizational id number</span></td>
                 </tr>
                 <tr>
-                    <td colspan="2" align="center" id="useridbox"><input type="text" autocomplete="off" name="userid" id="userid" placeholder="User Name" value="<?php echo $userid?>"></td>
+                    <td colspan="2" align="center" id="useridbox"><input type="text" autocomplete="off" name="uname" id="userid" placeholder="User Name" value="<?php echo $uname?>"></td>
                 </tr>
                 <tr>
-                    <td colspan="2" align="center" id="erroruseridbox"><span><?php echo $error_userid?></span></td>
+                    <td colspan="2" align="center" id="erroruseridbox"><span><?php echo $error_uname?></span></td>
                 </tr>
                 <tr>
-                    <td colspan="2" align="center" id="passwordbox"><input type="password" name="password" id="password" placeholder="Password" value="<?php echo $password?>"></td>
+                    <td colspan="2" align="center" id="passwordbox"><input type="password" name="pass" id="password" placeholder="Password" value="<?php echo $pass?>"></td>
                 </tr>
                 <tr>
-                    <td colspan="2" align="center" id="errorpasswordbox"><?php echo $error_password?></td>
+                    <td colspan="2" align="center" id="errorpasswordbox"><?php echo $error_pass?></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center" id="loginbox"><input type="submit" name="login" id="login" Value="Log in"></td>
